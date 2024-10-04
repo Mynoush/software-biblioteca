@@ -35,5 +35,20 @@ def livros():
 
     return render_template('livros.html')
 
+@app.route('/unidades', methods=['GET', 'POST'])
+def unidades():
+    if request.method == 'POST':
+        nome_unidade = request.form['nome_unidade']
+        endereco = request.form['endereco']
+
+        cursor.execute(
+            "INSERT INTO unidades (nome_unidade, endereco) VALUES (%s, %s)",
+            (nome_unidade, endereco)
+        )
+        db.commit()
+        return redirect(url_for('index'))
+
+    return render_template('unidades.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
