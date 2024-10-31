@@ -16,3 +16,11 @@ CREATE TABLE unidades (
 );
 
 SELECT * FROM unidades;
+
+CREATE TABLE emprestimos (
+    livro VARCHAR(255),
+    usuario VARCHAR(255),
+    data_emprestimo DATE
+);
+
+SELECT * FROM emprestimos;

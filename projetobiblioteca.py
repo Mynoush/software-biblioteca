@@ -50,5 +50,21 @@ def unidades():
 
     return render_template('unidades.html')
 
+@app.route('/emprestimos', methods=['GET', 'POST'])
+def emprestimos():
+    if request.method == 'POST':
+        livro = request.form['livro']
+        usuario = request.form['usuario']
+        data_emprestimo = request.form['data_emprestimo']
+
+        cursor.execute(
+            "INSERT INTO emprestimos (livro, usuario, data_emprestimo) VALUES (%s, %s, %s)",
+            (livro, usuario, data_emprestimo)
+        )
+        db.commit()
+        return redirect(url_for('index'))
+
+    return render_template('emprestimos.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
