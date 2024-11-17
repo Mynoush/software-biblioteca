@@ -66,5 +66,21 @@ def emprestimos():
 
     return render_template('emprestimos.html')
 
+@app.route('/devolucoes', methods=['GET', 'POST'])
+def devolucoes():
+    if request.method == 'POST':
+        livro = request.form['livro']
+        usuario = request.form['usuario']
+        data_devolucao = request.form['data_devolucao']
+
+        cursor.execute(
+            "INSERT INTO devolucoes (livro, usuario, data_devolucao) VALUES (%s, %s, %s)",
+            (livro, usuario, data_devolucao)
+        )
+        db.commit()
+        return redirect(url_for('index'))
+
+    return render_template('devolucoes.html')
+
 if __name__ == "__main__":
     app.run(debug=True)

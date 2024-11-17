@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Gerenciamento da Biblioteca</h1>
+<div class="menu">
+    <button onclick="showForm('livros')">Cadastrar Livros</button>
+    <button onclick="showForm('unidades')">Cadastrar Unidade</button>
+    <button onclick="showForm('emprestimos')">Registrar Empréstimo</button>
+    <button onclick="showForm('devolucoes')">Registrar Devolução</button>
+</div>
+
+<div id="form-container"></div>
+
+<script>
+    function showForm(form) {
+        fetch(`/${form}`)
+            .then(response => response.text())
+            .then(html => document.getElementById('form-container').innerHTML = html);
+    }
+</script>
+{% endblock %}

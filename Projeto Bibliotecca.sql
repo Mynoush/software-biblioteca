@@ -9,7 +9,6 @@ CREATE TABLE livros (
 
 SELECT * FROM livros;
 
-
 CREATE TABLE unidades (
     nome_unidade VARCHAR(255),
     endereco VARCHAR(255)
@@ -24,3 +23,11 @@ CREATE TABLE emprestimos (
 );
 
 SELECT * FROM emprestimos;
+
+CREATE TABLE devolucoes (
+    livro VARCHAR(255),
+    usuario VARCHAR(255),
+    data_devolucao DATE
+);
+
+SELECT * FROM devolucoes;
